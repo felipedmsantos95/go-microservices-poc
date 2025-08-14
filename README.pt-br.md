@@ -34,8 +34,8 @@ graph LR
     C -- Entrega Mensagem --> D
 ```
 
-1.  **Serviço de Pedidos (`servico-de-pedidos`):** Uma API REST que recebe requisições para criar novos pedidos. Após processar um pedido, ele publica uma mensagem em uma fila do RabbitMQ.
-2.  **Serviço de Notificação (`servico-de-notificacao`):** Ouve a fila `notifications` no RabbitMQ. Ao receber uma mensagem, ele a processa (atualmente, apenas exibe um log).
+1.  **Serviço de Pedidos (`orders-service`):** Uma API REST que recebe requisições para criar novos pedidos. Após processar um pedido, ele publica uma mensagem em uma fila do RabbitMQ.
+2.  **Serviço de Notificação (`notification-service`):** Ouve a fila `notifications` no RabbitMQ. Ao receber uma mensagem, ele a processa (atualmente, apenas exibe um log).
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -72,18 +72,18 @@ docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ### 3. Executar o Serviço de Notificação
 Abra um **novo terminal** e execute os seguintes comandos:
 ```bash
-cd servico-de-notificacao
+cd notification-service
 go run main.go
 ```
-> Você verá a mensagem: `Serviço de Notificação iniciado. Aguardando por mensagens...`
+> Você verá a mensagem: `[*] Waiting for messages. To exit press CTRL+C`
 
 ### 4. Executar o Serviço de Pedidos
 Abra um **segundo terminal** e execute os seguintes comandos:
 ```bash
-cd servico-de-pedidos
+cd orders-service
 go run main.go
 ```
-> Você verá a mensagem: `Servidor de Pedidos iniciado na porta 8080`
+> Você verá a mensagem: `Started server on :3000`
 
 ### 5. Testar a Aplicação
 Envie uma requisição POST para o serviço de pedidos usando cURL ou uma ferramenta como o Postman.
@@ -102,6 +102,6 @@ curl -X POST http://localhost:8080/orders \
 - No terminal do **serviço de notificação**, você verá um log confirmando o recebimento da mensagem da fila.
 
 ## 📈 Próximos Passos
-- [ ] **Fase 3:** Integrar o Kafka para criar um `servico-de-analise` orientado a eventos.
+- [ ] **Fase 3:** Integrar o Kafka para criar um `analytics-service` orientado a eventos.
 - [ ] **Fase 4:** Criar `Dockerfiles` para containerizar os serviços Go.
 - [ ] **Fase 5:** Implantar toda a arquitetura no Kubernetes.

@@ -74,18 +74,18 @@ docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ### 3. Run the Notification Service
 Open a **new terminal** and run the following commands:
 ```bash
-cd servico-de-notificacao
+cd notification-service
 go run main.go
 ```
-> You will see the message: `Serviço de Notificação iniciado. Aguardando por mensagens...`
+> You will see the message: `[*] Waiting for messages. To exit press CTRL+C`
 
 ### 4. Run the Order Service
 Open a **second terminal** and run the following commands:
 ```bash
-cd servico-de-pedidos
+cd orders-service
 go run main.go
 ```
-> You will see the message: `Servidor de Pedidos iniciado na porta 8080`
+> You will see the message: `Started server on :3000`
 
 ### 5. Test the Application
 Send a POST request to the order service using cURL or a tool like Postman.
