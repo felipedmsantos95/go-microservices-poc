@@ -58,7 +58,7 @@ Siga os passos abaixo para executar a aplicação em seu ambiente local.
 
 ### 1. Clonar o Repositório
 ```bash
-git clone [URL_DO_SEU_REPOSITORIO]
+git clone https://github.com/felipedmsantos95/go-microservices-poc
 cd go-poc-microsservicos
 ```
 

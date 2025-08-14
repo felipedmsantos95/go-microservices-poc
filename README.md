@@ -60,7 +60,7 @@ Follow the steps below to run the application in your local environment.
 
 ### 1. Clone the Repository
 ```bash
-git clone [YOUR_REPOSITORY_URL]
+git clone https://github.com/felipedmsantos95/go-microservices-poc
 cd go-poc-microsservicos
 ```
 
